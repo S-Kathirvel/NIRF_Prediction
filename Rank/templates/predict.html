@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Predict NIRF Rank</title>
+    </head>
+    <body>
+        <h1>Predict NIRF Rank</h1>
+        
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                padding: 20px;
+                background-color: #f4f4f4;
+            }
+    
+            h1 {
+                color: #333;
+            }
+    
+            form {
+                max-width: 400px;
+                margin: 20px auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+    
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+                color: #333;
+            }
+    
+            input {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                box-sizing: border-box;
+            }
+    
+            button {
+                background-color: #007BFF;
+                color: #fff;
+                padding: 10px;
+                border: none;
+                cursor: pointer;
+            }
+        </style>
+        
+        <form method="post" action="{% url 'predict' %}">
+            {% csrf_token %}
+            <label for="TLR">TLR:</label>
+            <input type="text" name="TLR" required min="0" max="100">
+            <br>
+            <label for="RPC">RPC:</label>
+            <input type="text" name="RPC" required min="0" max="100">
+            <br>
+            <label for="GO">GO:</label>
+            <input type="text" name="GO" required min="0" max="100">
+            <br>
+            <label for="OI">OI:</label>
+            <input type="text" name="OI" required min="0" max="100">
+            <br>
+            <label for="PERCEPTION">PERCEPTION:</label>
+            <input type="text" name="PERCEPTION" required min="0" max="100">
+            <br>
+            <label for="YEAR">YEAR</label>
+            <input type="text" name="YEAR" value="{{ default_year }}" min="2016" max="2024">
+            <br>
+            <button type="submit">Predict</button>
+        </form>
+    </body>
+    </html>
+    
+    <!-- your_app_name/templates/predict.html -->

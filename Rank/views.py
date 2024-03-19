@@ -4,7 +4,7 @@ from .models import NIRFPrediction
 from django.views import View
 
 def home_view(request):
-    return render(request, 'home.html')\
+    return render(request, 'home.html')
     
 def predict_view(request):
     if request.method == 'POST':
